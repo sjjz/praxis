@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: praxis-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: praxis
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d praxis"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: praxis-api
+    environment:
+      HTTP_ADDR: ":8080"
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/praxis?sslmode=disable"
+      DEV_USER_ID: "00000000-0000-0000-0000-000000000001"
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -1,0 +1,10 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    schema: "schema.sql"
+    queries: "query"
+    gen:
+      go:
+        package: "dbsqlc"
+        out: "../lib/dbsqlc"
+        sql_package: "pgx/v5"
