@@ -11,7 +11,11 @@ import (
 func (s *Server) Router() *fiber.App {
 	app := fiber.New(fiber.Config{DisableStartupMessage: true})
 
-	app.Use(cors.New())
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowMethods: "GET,POST,PATCH,DELETE,OPTIONS",
+		AllowHeaders: "Origin,Content-Type,Accept,Authorization",
+	}))
 	app.Get("/v1/health", s.health)
 
 	v1 := app.Group("/v1", s.devUserMiddleware)

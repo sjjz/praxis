@@ -209,7 +209,7 @@ function App() {
             React.createElement('label', null, 'Carbs (g)', React.createElement('input', { type: 'number', step: '0.1', name: 'carbs_g' })),
             React.createElement('div', { className: 'btn-row' },
               React.createElement('button', { type: 'submit' }, 'Save Food'),
-              React.createElement('button', { type: 'button', className: 'secondary', onClick: () => setShowFood(false) }, 'Cancel')))))),
+              React.createElement('button', { type: 'button', className: 'secondary', onClick: () => setShowFood(false) }, 'Cancel'))))),
     )
   );
 }
