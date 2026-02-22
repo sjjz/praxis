@@ -4,12 +4,14 @@ import (
 	"praxis/app/lib"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/google/uuid"
 )
 
 func (s *Server) Router() *fiber.App {
 	app := fiber.New(fiber.Config{DisableStartupMessage: true})
 
+	app.Use(cors.New())
 	app.Get("/v1/health", s.health)
 
 	v1 := app.Group("/v1", s.devUserMiddleware)
