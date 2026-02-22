@@ -39,6 +39,14 @@ API health:
 Run both services:
 `docker compose up --build`
 
+## Web Client (React)
+A mobile-first React web client lives under `/website` and is intentionally decoupled from the Go backend.
+
+Run it separately (example):
+`cd website && python3 -m http.server 4173`
+
+By default the client calls `http://localhost:8080/v1`. You can override API host by setting `localStorage.praxis_api_base` in the browser console (for example, `localStorage.praxis_api_base = "https://api.example.com"`).
+
 ## SQLC
 Generate typed query package:
 `make sqlc`
