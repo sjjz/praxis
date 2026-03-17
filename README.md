@@ -1,9 +1,6 @@
-# Praxis Backend MVP
+# Praxis
 
-Backend for mood checkins and macro logging using:
-- Go + Fiber REST API
-- Postgres (Supabase-compatible schema)
-- Docker-first local workflow
+Praxis models health as a dynamic system by integrating nutrition, activity and sleep, and subjective signals such as mood and digestion. Based on these inputs, it generates adaptive dietary recommendations aimed at restoring balance in a user’s current physiological state, drawing on principles from Eastern medicine around digestion, seasonality, and equilibrium.
 
 ## Layout
 - `app/main.go`: API entrypoint
